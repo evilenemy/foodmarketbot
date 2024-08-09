@@ -8,12 +8,9 @@ require_once "Categories.php";
 require_once "Products.php";
 require_once "Cart.php";
 require_once "Orders.php";
+require_once "Settings.php";
 
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
-$telegram = new Telegram("");
+$telegram = new Telegram(Settings::API_TOKEN);
 $data = $telegram->getData();
 $message = $data['message'];
 $text = $message['text'];
@@ -24,9 +21,9 @@ $user_lang = $user->getLanguage();
 $texts = new Texts($user_lang);
 $categories = new Categories($user_lang);
 
-$rootPath = "https://u13602.xvest1.ru/foodmarketbot/";
+$rootPath = Settings::ROOT_PATH;
 $numbers = ['', '1️⃣', "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣"];
-$ADMIN_CHAT_IDS = [1858903376];
+$ADMIN_CHAT_IDS = Settings::ADMIN_CHAT_IDS;
 
 if (!empty($telegram->Callback_Query())) {
 	$callback_data = $telegram->Callback_Data();
