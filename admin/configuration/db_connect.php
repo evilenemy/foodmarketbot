@@ -1,11 +1,11 @@
 <?php
-
+require_once "../../Settings.php";
 /*подключение к базе данных*/
 
-$host = "localhost"; // в 90% случаев это менять не надо
-$password = "lK2nU3zX8l";
-$username = "x_u_13602_foodmarket";
-$databasename = "x_u_13602_foodmarket";
+$host = Settings::DB_HOST; // в 90% случаев это менять не надо
+$password = Settings::DB_PASSWORD;
+$username = Settings::DB_USERNAME;
+$databasename = Settings::DB_NAME;
 
 global $db;
 
